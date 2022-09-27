@@ -31,10 +31,13 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+  const bannerText = variant === 'on-sale' ? 'Sale' : 'Just released!';
+
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
+          {variant !== 'default' && <Banner color={variant === 'on-sale' ? 'primary' : 'secondary'}>{bannerText}</Banner>}
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
@@ -60,7 +63,6 @@ const Wrapper = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
-  max-width: 340px;
 `;
 
 const Image = styled.img`
@@ -88,5 +90,14 @@ const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
 `;
+
+const Banner = styled.div`
+  position: absolute;
+  right: -4px;
+  top: 12px;
+  padding: 10px;
+  background-color: ${props => props.color ? COLORS[props.color] : ''};
+  color: ${COLORS.white};
+`
 
 export default ShoeCard;
