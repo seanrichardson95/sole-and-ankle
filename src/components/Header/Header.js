@@ -21,17 +21,26 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        <EmptyDiv>
+        </EmptyDiv>
       </MainHeader>
     </header>
   );
 };
 
 const MainHeader = styled.div`
-  padding: 0 32px;
+  padding: 24px 32px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
 `;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  display: flex;
+  gap: 48px;
+`;
 
 const NavLink = styled.a`
   font-size: 1.125rem;
@@ -44,5 +53,10 @@ const NavLink = styled.a`
     color: ${COLORS.secondary};
   }
 `;
+
+const EmptyDiv = styled.div`
+  width: 138px;
+  visibility: hidden;
+`
 
 export default Header;
